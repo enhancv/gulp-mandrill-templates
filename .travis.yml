@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- 6.9.1
+cache:
+  directories:
+  - node_modules
+script:
+- true
+deploy:
+  provider: npm
+  email: ikerin@gmail.com
+  api_key:
+    secure: H0o3sNSxY7SLmj40g5jegQ3V7E0xjcCVLUXn3tV4b3B1GYl3PaqTzBBbNPRo2ImP9bHXLFDHq8G9HOMJt/QWXDQgvnJuN8tXdfT7T0tk3YhVoHYtUtzuHSFdQz3SeAK2K4fnMEDCYT/kKHK/gZ+wUIuFZ+ghdgxwhPNhJgBp/OsN32wG2EWxVFA8OVmRit8NFX9xLS/STqmk2u2HoQZRBFGiZ76FVq3Hmcd89CzRrkMmFHBVGKm0zZBXgZHj9/1JCa5i6OQBxjJ9VLGMDexZ61CyTg1HUl44ysZqzDBr7ErfpiXxeOUjm6KIBEelGhhhZWsEuj1JRdEA22k7EybbBMKM0t0KSuSJqmFTl4hpawdzkn0fE6ETrp8VT8iaoxtP2cxYa1RV4j2zTE/84xpQJrGjzOERzDgMrMcQqn+6y20NoYoeI7/j+cLQa77aGVdrBQsZNvDU6AABPNBPA0DSJX2PsYUVF+tnGX8n/fOGpaCwcNBtvPXM4UdRhfE8pqY//66Tt8nQuo5tQNVupazb7synoXpEeDoKtrCVgFwKi6U2YGtDCrPyV0JfG3hsyHlxxgDcaa1t0gwXyIti/ERJYr5cg9Ml7TVC9pDFAYztDUPtu/Pfa5Mb36hf6x7gG9jUlsJbx+oI69QlN/GdL6Cxvf/9jzo273hQXUpaoLyIJiw=
+  on:
+    tags: true
+    repo: enhancv/gulp-mandrill-templates
