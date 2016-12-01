@@ -4,8 +4,6 @@ node_js:
 cache:
   directories:
   - node_modules
-script:
-- true
 deploy:
   provider: npm
   email: ikerin@gmail.com
