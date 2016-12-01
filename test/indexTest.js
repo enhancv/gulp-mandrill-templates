@@ -6,8 +6,12 @@ const dotenv = require('dotenv');
 
 dotenv.config({ silent: true });
 let client;
+const content = '<html><head><title>Your friend&#x27;s top strengths</title></head><body></body></html>';
 
-describe('gulp-mandrill-templates', function() {
+describe('gulp-mandrill-templates', function () {
+
+    this.timeout(4000);
+
     before (function () {
         client = new mandrill.Mandrill(process.env.MANDRILL_KEY);
     });
@@ -19,7 +23,7 @@ describe('gulp-mandrill-templates', function() {
     it('should add template', function (done) {
         const fakeFile = new File({
             path: '/tmp/test-template.html',
-            contents: new Buffer('<html><body></body></html>')
+            contents: new Buffer(content)
         });
         const plugin = mandrillTemplates({ key: process.env.MANDRILL_KEY });
 
@@ -27,12 +31,13 @@ describe('gulp-mandrill-templates', function() {
 
         plugin.once('data', function (file) {
             assert(file.isBuffer());
-            assert.equal(file.contents.toString(), '<html><body></body></html>');
+            assert.equal(file.contents.toString(), content);
 
             client.templates.info(
                 { name: 'test-template' },
                 function (info) {
-                    assert.equal(info.code, '<html><body></body></html>');
+                    assert.equal(info.code, content);
+                    assert.equal(info.subject, 'Your friend\'s top strengths');
                     done();
                 }
             );

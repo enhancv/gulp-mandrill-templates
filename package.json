@@ -12,6 +12,7 @@
   "dependencies": {
     "dotenv": "^2.0.0",
     "gulp-util": "^3.0.7",
+    "html-entities": "^1.2.0",
     "mandrill-api": "^1.0.45",
     "through2": "^2.0.1"
   },
