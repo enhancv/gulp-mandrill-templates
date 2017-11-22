@@ -3,6 +3,7 @@ const through = require('through2');
 const gutil = require('gulp-util');
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
+const path = require('path');
 
 module.exports = function (options) {
     const client = new mandrill.Mandrill(options.key);
@@ -12,7 +13,7 @@ module.exports = function (options) {
         const subject = /<title>(.*?)<\/title>/.test(code)
             ? entities.decode(code.match(/<title>(.*?)<\/title>/)[1])
             : '';
-        const name = file.stem;
+        const name = path.parse(file.path).name;
 
         client.templates.info(
             { name: name },
